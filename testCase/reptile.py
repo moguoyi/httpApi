@@ -44,7 +44,7 @@ def down_cont(url):
     name = url.split(',')[-1].split('&')[0]
     if response.status_code == 200:
         # 表示,如果文件名字相同,就删除当前文件,然后再创建一个一样名字的文件
-        with open('/Users/moguoyi/pyStudy/piture/%s.jpg' % name, 'wb') as f:
+        with open('/Users/moguoyi/pyStudy/httpApi/file/%s.jpg' % name, 'wb') as f:
             print('正在下载当前图片: ' + url)
             print(name)
             # 以二进制的方法写入到本地

@@ -4,6 +4,9 @@
 # 还有就是我么的测试框架包   unittest
 import requests
 import unittest
+import HTMLTestRunner
+import time
+
 # 新建一个测试类
 class Test_01(unittest.TestCase):
     # 新建测试方法
@@ -25,4 +28,30 @@ class Test_01(unittest.TestCase):
 
 # 执行测试
 if __name__== '__main__':
+    now = time.strftime('%Y-%m%d %H%M%S')
+    print(now)
+    filename = '/Users/moguoyi/pyStudy/httpApi/report/ ' + now + 'result.html'
+    fp = open(filename, 'wb')
+    s = unittest.TestSuite()  # 实例化
+    s.addTest(Test_01("test_gs"))  # 加载用例
+
+    # filename = open(os.getcwd() + '/testResult_report' + now + '.html','wb')
+    # runner = HTMLTestRunner(stream = filename,title = '单元测试报告',description = '单元测试报告',tester = '正在学习的测试人员' )
+    # runner.run(s)
+    # 定义报告存放路径
+    print("运行到这里")
+    # 定义测试报告
+    # runner=HtmlTestRunner(stream=fp,title='测试报告',description='单元测试报告：',tester = '正在学习的测试人员')
+    runner = HTMLTestRunner.HTMLTestRunner(fp, verbosity=2, title='Test', description='测试报告')
+    runner.run(s)
+    # fp.close()  # 关闭报告文件
+    #
+    # filepath = '../report/htmlreport.html'
+    # ftp = open(filepath, 'wb')
+    # suite = unittest.TestSuite()
+    # suite.addTest(TestMathFunc('test_01'))
+    # suite.addTest(TestMathFunc('test_02'))
+    # runner = HTMLTestRunner.HTMLTestRunner(stream=ftp, title='welcome to this web')
+    # runner.run(suite)
     unittest.main()
+
