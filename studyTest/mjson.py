@@ -25,3 +25,4 @@ class Mjson(object):
 if __name__=="__main__":
     c=Mjson()
     c.hjson(c.adict,"xiaoyuk",0)
+
